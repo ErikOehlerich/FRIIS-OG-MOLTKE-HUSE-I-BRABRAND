@@ -307,8 +307,8 @@
                             '<span>Filter år</span><span style="font-size:12px;" id="yearToggleIcon">▾</span></div>' +
                             '<div id="yearContent" style="display:block;margin-top:6px;font-size:12px;">' +
                             '<div style="font-size:11px;margin-bottom:4px;">Fra: <span id="yrMinLbl">—</span> Til: <span id="yrMaxLbl">—</span></div>' +
-                            '<input id="yrMin" type="range" min="1900" max="2100" value="1900" style="width:140px;"><br>' +
-                            '<input id="yrMax" type="range" min="1900" max="2100" value="2100" style="width:140px;margin-top:6px;"><br>' +
+                            '<input id="yrMin" type="range" min="1900" max="2050" value="1900" style="width:140px;"><br>' +
+                            '<input id="yrMax" type="range" min="1900" max="2050" value="2050" style="width:140px;margin-top:6px;"><br>' +
                             '<label style="font-size:11px;margin-top:6px;display:block;"><input id="yrUnknown" type="checkbox" checked> Vis ukendte år</label>' +
                             '</div>';
             L.DomEvent.disableClickPropagation(div);
@@ -887,11 +887,7 @@
                 // Opsæt år-slider hvis vi har årstal
                 var years = allMarkers.map(function(m){ return m._year; }).filter(isFinite);
                 if (years.length > 0) {
-                    var minY = Math.min.apply(null, years);
-                    var maxY = Math.max.apply(null, years);
-                    // Start sliderens mindste værdi ved 1900 så kortet kan være blankt til 1900
-                    var startMin = 1900;
-                    updateYearFilterUI(startMin, maxY);
+                    updateYearFilterUI(1900, 2050);
                      // initial filter (vis alle mellem min og max)
                      applyYearFilter();
                 } else {
